@@ -1,3 +1,23 @@
 <resources>
+    <!-- Nombre de la aplicación -->
     <string name="app_name">App_Pedidos</string>
+
+    <!-- Textos para la gestión de productos -->
+    <string name="buscar_producto">Buscar producto</string>
+    <string name="agregar_producto">Agregar producto</string>
+    <string name="guardar">Guardar</string>
+    <string name="nombre_producto">Nombre del producto</string>
+    <string name="descripcion_producto">Descripción del producto</string>
+    <string name="precio_producto">Precio del producto</string>
+    <string name="tipo_producto">Tipo</string>
+    <string name="estado_producto">Estado</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="producto_disponible">Disponible</string>
+    <string name="producto_agotado">Agotado</string>
+    <string name="producto_pronto">Pronto</string>
+    <string name="producto_plato">Plato</string>
+    <string name="producto_bebida">Bebida</string>
+    <string name="producto_postre">Postre</string>
+    <string name="producto_adicional">Adicional</string>
 </resources>
