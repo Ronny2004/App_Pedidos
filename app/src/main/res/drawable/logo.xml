@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Círculo como fondo -->
+    <path
+        android:fillColor="#FF6347"
+        android:pathData="M50,0
+                         A50,50 0 1,1 0,50
+                         A50,50 0 1,1 50,0"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"/>
+
+    <!-- Tenedor dentro del círculo -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M40,30 L50,30 L50,50 L40,50 Z
+                         M50,30 L60,30 L60,70 L50,70 Z"
+        android:strokeWidth="2"
+        android:strokeColor="#FF6347"/>
+</vector>

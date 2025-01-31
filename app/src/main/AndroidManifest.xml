@@ -13,15 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
 
-        <!-- Actividad de Login (Inicio de sesión) -->
+        <!-- Actividad de Splash (Pantalla de Bienvenida) -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Actividad de Login (Inicio de sesión) -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true" />
 
         <!-- Actividad principal (MainActivity) -->
         <activity

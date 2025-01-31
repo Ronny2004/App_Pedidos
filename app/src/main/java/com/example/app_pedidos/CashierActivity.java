@@ -1,7 +1,10 @@
 package com.example.app_pedidos;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,16 +25,27 @@ public class CashierActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private PedidoAdapter adapter;
+    private Button logoutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cashier);
 
+        // Inicialización del RecyclerView y botón de cerrar sesión
         recyclerView = findViewById(R.id.recyclerViewPedidosCajero);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        logoutButton = findViewById(R.id.logoutButton);
 
         loadPedidosFinalizados();
+
+        // Configurar el botón de cerrar sesión
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logout();
+            }
+        });
     }
 
     private void loadPedidosFinalizados() {
@@ -68,5 +82,22 @@ public class CashierActivity extends AppCompatActivity {
     private String getAuthToken() {
         SharedPreferences sharedPreferences = getSharedPreferences("app_pedidos", MODE_PRIVATE);
         return sharedPreferences.getString("auth_token", ""); // Verifica que el token esté guardado aquí
+    }
+
+    // Método para manejar el cierre de sesión
+    private void logout() {
+        // Eliminar el token de SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("app_pedidos", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("auth_token"); // Eliminar el token
+        editor.apply();
+
+        // Mostrar un mensaje y redirigir al login
+        Toast.makeText(CashierActivity.this, "Sesión cerrada", Toast.LENGTH_SHORT).show();
+
+        // Redirigir al usuario a la pantalla de login
+        Intent intent = new Intent(CashierActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish(); // Finalizar esta actividad
     }
 }

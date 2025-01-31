@@ -1,5 +1,6 @@
 package com.example.app_pedidos;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,7 @@ public class WaiterActivity extends AppCompatActivity {
     private PedidoAdapter pedidoAdapter;
     private List<Pedido> pedidosList;
     private Button addPedidoButton;
+    private Button logoutButton; // Botón de Cerrar Sesión
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +37,11 @@ public class WaiterActivity extends AppCompatActivity {
 
         pedidosRecyclerView = findViewById(R.id.pedidosRecyclerView);
         addPedidoButton = findViewById(R.id.addPedidoButton);
+        logoutButton = findViewById(R.id.logoutButton); // Inicializamos el botón
 
         pedidosList = new ArrayList<>();
 
-        // Obtener el token de SharedPreferences
-        String token = getToken();
-        if (token == null) {
-            Toast.makeText(this, "Token no encontrado. Inicia sesión nuevamente.", Toast.LENGTH_SHORT).show();
-            return; // Salir de la actividad si no hay token
-        }
-
-        // Inicializar el adaptador después de obtener el token
-        pedidoAdapter = new PedidoAdapter(pedidosList, token, this); // Correcto
+        // Inicializar el adaptador sin necesidad de token en onCreate()
         pedidosRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         pedidosRecyclerView.setAdapter(pedidoAdapter);
 
@@ -54,14 +49,17 @@ public class WaiterActivity extends AppCompatActivity {
         loadPedidos();
 
         addPedidoButton.setOnClickListener(this::addNewPedido);
+
+        // Configurar el botón de cerrar sesión
+        logoutButton.setOnClickListener(this::logout);
     }
 
     public void addNewPedido(View view) {
-        Pedido nuevoPedido = new Pedido(1, 0.0, "pendiente"); // ID usuario y estado inicial
+        Pedido nuevoPedido = new Pedido(1, 0.0, "pendiente");
 
         String token = getToken();
         if (token == null) {
-            Toast.makeText(this, "Token no encontrado. Inicia sesión nuevamente.", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Token no encontrado. Inicia sesión nuevamente.", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -119,5 +117,19 @@ public class WaiterActivity extends AppCompatActivity {
     private String getToken() {
         SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         return sharedPreferences.getString("token", null); // Asegúrate de que el token esté guardado aquí
+    }
+
+    // Método para cerrar sesión
+    private void logout(View view) {
+        // Limpiar SharedPreferences para borrar el token
+        SharedPreferences sharedPreferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("token");
+        editor.apply();
+
+        // Redirigir al login sin lógica adicional
+        Intent intent = new Intent(WaiterActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish(); // Finaliza la actividad actual para evitar que el usuario regrese a ella
     }
 }

@@ -3,15 +3,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="20dp"
+    android:background="@drawable/gradient_background">
 
+    <!-- Titulo de la sección -->
+    <TextView
+        android:id="@+id/tituloPedidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gestión de Pedidos"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Botón para agregar pedido -->
     <Button
         android:id="@+id/addPedidoButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agregar Pedido"
-        android:layout_marginBottom="10dp" />
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_background"
+        android:layout_marginTop="16dp" />
 
+    <!-- RecyclerView para mostrar los pedidos -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pedidosRecyclerView"
         android:layout_width="match_parent"
@@ -19,4 +35,16 @@
         android:layout_weight="1"
         android:divider="@android:color/darker_gray"
         android:dividerHeight="1dp" />
+
+    <!-- Botón para cerrar sesión -->
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar Sesión"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_background"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp" />
+
 </LinearLayout>

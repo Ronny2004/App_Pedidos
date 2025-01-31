@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Olla -->
+    <path
+        android:fillColor="#9E9E9E"
+        android:pathData="M12 30C8.69 30 6 28.21 6 26C6 24.79 8.69 23 12 23C15.31 23 18 24.79 18 26C18 28.21 15.31 30 12 30Z" />
+    <!-- Tapa de la Olla -->
+    <path
+        android:fillColor="#616161"
+        android:pathData="M8 26C8 24.9 10.24 24 12 24C13.76 24 16 24.9 16 26H8Z" />
+    <!-- Humo (Curvas) -->
+    <path
+        android:fillColor="#B0BEC5"
+        android:pathData="M10 18C10 15.79 11.29 14.03 12.95 14.03C14.61 14.03 15.9 15.79 15.9 18C15.9 20.21 14.61 21.97 12.95 21.97C11.29 21.97 10 20.21 10 18Z" />
+    <path
+        android:fillColor="#B0BEC5"
+        android:pathData="M14 16C14 14.9 15.24 14 17 14C18.76 14 20 14.9 20 16C20 17.1 18.76 18 17 18C15.24 18 14 17.1 14 16Z" />
+    <path
+        android:fillColor="#B0BEC5"
+        android:pathData="M11 13C11 11.79 12.29 10.03 13.95 10.03C15.61 10.03 16.9 11.79 16.9 13C16.9 14.21 15.61 15.97 13.95 15.97C12.29 15.97 11 14.21 11 13Z" />
+</vector>
